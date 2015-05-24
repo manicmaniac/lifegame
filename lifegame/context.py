@@ -17,6 +17,9 @@ class Context(object):
     def kill(self, cell):
         self._living_cells.remove(cell)
 
+    def clear(self):
+        self._living_cells.clear()
+
     def is_alive(self, cell):
         return cell in self._living_cells
 
