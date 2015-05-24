@@ -1,6 +1,8 @@
 lifegame
 ========
 
+[![Build Status](https://travis-ci.org/manicmaniac/lifegame.svg?branch=master)](https://travis-ci.org/manicmaniac/lifegame)
+
 An implementation of Conway's game of life in python.
 
 Introduction
@@ -8,7 +10,7 @@ Introduction
 
 Tk-based Conway's game of life.
 
-<img src="assets/lifegame.png" alt="screenshot"></img>
+![Screen Shot](assets/lifegame.png)
 
 How to play
 ------------
