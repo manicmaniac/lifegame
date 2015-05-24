@@ -10,10 +10,10 @@ class TestContext(unittest.TestCase):
         context = Context()
         self.assertIsNotNone(context.rule)
 
-    def test_produce_and_kill(self):
+    def test_bear_and_kill(self):
         context = Context()
         cell = Cell(0, 0)
-        context.produce(cell)
+        context.bear(cell)
         self.assertIn(cell, context._living_cells)
         context.kill(cell)
         self.assertNotIn(cell, context._living_cells)
@@ -22,7 +22,7 @@ class TestContext(unittest.TestCase):
         context = Context()
         cell = Cell(0, 0)
         self.assertFalse(context.is_alive(cell))
-        context.produce(cell)
+        context.bear(cell)
         self.assertTrue(context.is_alive(cell))
 
     def test__will_survive1(self):
@@ -30,9 +30,9 @@ class TestContext(unittest.TestCase):
         cell1 = Cell(0, 0)
         cell2 = Cell(1, 0)
         cell3 = Cell(2, 0)
-        context.produce(cell1)
-        context.produce(cell2)
-        context.produce(cell3)
+        context.bear(cell1)
+        context.bear(cell2)
+        context.bear(cell3)
         self.assertFalse(context._will_survive(cell1))
 
     def test__will_survive2(self):
@@ -40,9 +40,9 @@ class TestContext(unittest.TestCase):
         cell1 = Cell(0, 0)
         cell2 = Cell(1, 0)
         cell3 = Cell(2, 0)
-        context.produce(cell1)
-        context.produce(cell2)
-        context.produce(cell3)
+        context.bear(cell1)
+        context.bear(cell2)
+        context.bear(cell3)
         self.assertTrue(context._will_survive(cell2))
 
     def test__cells_to_calculate(self):
@@ -58,9 +58,9 @@ class TestContext(unittest.TestCase):
         cell1 = Cell(0, 0)
         cell2 = Cell(1, 0)
         cell3 = Cell(2, 0)
-        context.produce(cell1)
-        context.produce(cell2)
-        context.produce(cell3)
+        context.bear(cell1)
+        context.bear(cell2)
+        context.bear(cell3)
         cells_to_calculate = context._cells_to_calculate()
         self.assertTrue(len(cells_to_calculate), 12)
 
@@ -77,14 +77,14 @@ class TestContext(unittest.TestCase):
         cell1 = Cell(0, 0)
         cell2 = Cell(1, 0)
         cell3 = Cell(2, 0)
-        cell4 = Cell(-1, 1)
-        cell5 = Cell(1, 1)
-        context.produce(cell1)
-        context.produce(cell2)
-        context.produce(cell3)
+        cell4 = Cell(1, 1)
+        cell5 = Cell(1, -1)
+        context.bear(cell1)
+        context.bear(cell2)
+        context.bear(cell3)
         context.next()
         self.assertFalse(context.is_alive(cell1))
-        self.assertTrue(context.is_alive(cell3))
+        self.assertTrue(context.is_alive(cell2))
         self.assertFalse(context.is_alive(cell3))
         self.assertTrue(context.is_alive(cell4))
         self.assertTrue(context.is_alive(cell5))
