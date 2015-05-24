@@ -83,6 +83,7 @@ class Menu(tk.Menu):
 
 if __name__ == '__main__':
     root = tk.Tk()
+    root.title('lifegame')
     board = Board(root, context=Context())
     board.draw()
     board.pack(fill=tk.BOTH, expand=True)
